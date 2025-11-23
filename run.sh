@@ -9,8 +9,11 @@ DEVELOPER_KEY_PATH="${HOME}/.Garmin/ConnectIQ/connectIQ_developer_key"
 RDIR="$(dirname "${0}")"
 export PATH="${PATH}:${CIQ_PATH}"
 
-# Parse manifest.xml
-MINSDKVERSION="$(grep -oE 'minSdkVersion="[^"]*"' "${RDIR}/manifest.xml" | grep -oE '"[^"]*"' | tr -d '"')"
+# Parse strings.xml to get application name
+DEFAULT_APP_NAME="MyConnectIQApp"
+APP_NAME="$(grep -oP '(?<=<string id="AppName">)[^<]+' "${RDIR}/resources/strings/strings.xml" || echo "${DEFAULT_APP_NAME}")"
+
+# Parse manifest.xml to get supported devices
 DEVICES="$(grep -F '<iq:product id="' "${RDIR}/manifest.xml" | grep -oE '"[^"]*"' | tr -d '"')"
 NB_DEVICES="$(printf "%s\n" "${DEVICES}" | wc -l)"
 CURRENT_DEVICE="$(printf "%s\n" "${DEVICES}" | head -n $(( 1 + RANDOM % NB_DEVICES )) | tail -n 1)"
@@ -28,7 +31,6 @@ Commands:
     pack     Build the datafield as a Connect IQ package
     build    Build the datafield for a device
     run      Run in the simulator
-    debug    Debug with the simulator
     simu     Start the simulator
 
 Available devices:
@@ -72,11 +74,10 @@ function _pack() {
         --package-app \
         --warn \
         --typecheck 3 \
-        --api-level "${MINSDKVERSION}" \
         --jungles "${RDIR}/monkey.jungle;${RDIR}/barrels.jungle" \
-        --output "${RDIR}/bin/ActiveLookDataField.iq" \
+        --output "${RDIR}/bin/${APP_NAME}.iq" \
         --private-key "${DEVELOPER_KEY_PATH}"
-    echo "Application packaged at ${RDIR}/bin/ActiveLookDataField.iq"
+    echo "Application packaged at ${RDIR}/bin/${APP_NAME}.iq"
 }
 
 function _build() {
@@ -86,9 +87,9 @@ function _build() {
         --typecheck 0 \
         --device "${CURRENT_DEVICE}" \
         --jungles "${RDIR}/monkey.jungle;${RDIR}/barrels.jungle" \
-        --output "${RDIR}/bin/ActiveLookDataField-${CURRENT_DEVICE}.prg" \
+        --output "${RDIR}/bin/${APP_NAME}-${CURRENT_DEVICE}.prg" \
         --private-key "${DEVELOPER_KEY_PATH}"
-    echo "Build completed: ${RDIR}/bin/ActiveLookDataField-${CURRENT_DEVICE}.prg"
+    echo "Build completed: ${RDIR}/bin/${APP_NAME}-${CURRENT_DEVICE}.prg"
 }
 
 function _run() {
@@ -98,30 +99,16 @@ function _run() {
     _simu
     
     # Build if not already built
-    if [[ ! -f "${RDIR}/bin/ActiveLookDataField-${CURRENT_DEVICE}.prg" ]]; then
+    if [[ ! -f "${RDIR}/bin/${APP_NAME}-${CURRENT_DEVICE}.prg" ]]; then
         _build
     fi
     
     echo "Running application on simulator..."
     monkeydo ${CURRENT_OPTS} \
-        "${RDIR}/bin/ActiveLookDataField-${CURRENT_DEVICE}.prg" \
+        "${RDIR}/bin/${APP_NAME}-${CURRENT_DEVICE}.prg" \
         "${CURRENT_DEVICE}"
 
     echo "Application/Simulator exited."
-}
-
-function _debug() {
-    echo "Debugging on device: ${CURRENT_DEVICE}"
-    _simu
-    
-    if [[ ! -f "${RDIR}/bin/ActiveLookDataField-${CURRENT_DEVICE}.prg" ]]; then
-        _build
-    fi
-    
-    mdd ${CURRENT_OPTS} \
-        --device "${CURRENT_DEVICE}" \
-        --executable "${RDIR}/bin/ActiveLookDataField-${CURRENT_DEVICE}.prg" \
-        --debug-xml "${RDIR}/bin/ActiveLookDataField-${CURRENT_DEVICE}.prg.debug.xml"
 }
 
 function _device() {
@@ -169,11 +156,6 @@ while [[ $# -gt 0 ]]; do
             ;;
         run)
             _run
-            CURRENT_OPTS=
-            shift
-            ;;
-        debug)
-            _debug
             CURRENT_OPTS=
             shift
             ;;
