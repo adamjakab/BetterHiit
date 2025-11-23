@@ -1,5 +1,11 @@
-My First Datascreen
-=====================
+Better HIIT
+============
+
+**Better HIIT** is an activity data field for Garmin devices. It is geared towards people who need a single easy to read screen when sweat is rolling down their foreheads into their eyes and who do not have enough oxygen
+to think about absurd exercise names given by Garmin ("Back Extension with Opposite Arm and Leg Reach" = "Bird Dog").
+
+
+This data field is the successor of the app called [iHIIT](https://apps.garmin.com/apps/bc02f0f2-9d7d-4476-8aaf-ef99f2e78c33) which was written for devices which did not support HIIT workouts. 
 
 ## Setup
 

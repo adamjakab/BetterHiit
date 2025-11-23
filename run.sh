@@ -12,6 +12,7 @@ export PATH="${PATH}:${CIQ_PATH}"
 # Parse strings.xml to get application name
 DEFAULT_APP_NAME="MyConnectIQApp"
 APP_NAME="$(grep -oP '(?<=<string id="AppName">)[^<]+' "${RDIR}/resources/strings/strings.xml" || echo "${DEFAULT_APP_NAME}")"
+APP_NAME="${APP_NAME// /_}"  # Replace spaces with underscores
 
 # Parse manifest.xml to get supported devices
 DEVICES="$(grep -F '<iq:product id="' "${RDIR}/manifest.xml" | grep -oE '"[^"]*"' | tr -d '"')"
