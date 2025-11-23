@@ -37,9 +37,9 @@ class HiitDataFieldView extends WatchUi.DataField {
         } else {
             View.setLayout(Rez.Layouts.MainLayout(dc));
             var labelView = View.findDrawableById("label") as Text;
-            labelView.locY = labelView.locY - 16;
+            labelView.locY = labelView.locY - 30;
             var valueView = View.findDrawableById("value") as Text;
-            valueView.locY = valueView.locY + 7;
+            valueView.locY = valueView.locY + 30;
         }
 
         (View.findDrawableById("label") as Text).setText(Rez.Strings.label);
