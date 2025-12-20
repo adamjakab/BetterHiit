@@ -18,8 +18,8 @@ This data field is the successor of the app called [iHIIT](https://apps.garmin.c
 Once the environment is set up correctly, use the run.sh script with the `run` command:
 > $ ./run.sh run
 
-To run for a specific device (e.x.: fenix7):
-> $ ./run.sh --device fenix7 run
+To run for a specific device (e.x.: Forerunner 965):
+> $ ./run.sh --device fr965 run
 
 To run tests (not implemented):
 > $ ./run.sh test

@@ -2,6 +2,7 @@ import Toybox.Activity;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
+using Toybox.System as Sys;
 
 class HiitDataFieldView extends WatchUi.DataField {
 
@@ -51,20 +52,22 @@ class HiitDataFieldView extends WatchUi.DataField {
     // guarantee that compute() will be called before onUpdate().
     function compute(info as Activity.Info) as Void {
         // See Activity.Info in the documentation for available information.
-        if(info has :currentHeartRate){
-            if(info.currentHeartRate != null){
-                mValue = info.currentHeartRate as Number;
-            } else {
-                mValue = 0.0f;
-            }
+        
+        mValue = mValue + 0.25f;
+        if (mValue > 100.0f) {
+            mValue = 0.0f;
         }
+
+        Sys.println("[HiitDataFieldView] compute: " + mValue);
+        
     }
 
     // Display the value you computed here. This will be called
     // once a second when the data field is visible.
     function onUpdate(dc as Dc) as Void {
         // Set the background color
-        (View.findDrawableById("Background") as Text).setColor(getBackgroundColor());
+        // var bgColor = Graphics.COLOR_ORANGE;
+        // (View.findDrawableById("Background") as Text).setColor(getBackgroundColor());
 
         // Set the foreground color and value
         var value = View.findDrawableById("value") as Text;

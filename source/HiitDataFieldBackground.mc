@@ -13,7 +13,7 @@ class Background extends WatchUi.Drawable {
 
         Drawable.initialize(dictionary);
 
-        mColor = Graphics.COLOR_WHITE;
+        mColor = Graphics.COLOR_DK_GREEN;
     }
 
     function setColor(color as ColorValue) as Void {
