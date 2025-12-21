@@ -23,6 +23,6 @@ class HiitDataFieldApp extends Application.AppBase {
 
 }
 
-function getApp() as HiitDataFieldApp {
-    return Application.getApp() as HiitDataFieldApp;
-}
+// function getApp() as HiitDataFieldApp {
+//     return Application.getApp() as HiitDataFieldApp;
+// }

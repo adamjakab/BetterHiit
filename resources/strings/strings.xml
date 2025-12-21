@@ -1,4 +1,4 @@
-<strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+<strings>
     <string id="AppName">Better HIIT Datafield</string>
     <string id="label">Current Exercise</string>
 </strings>

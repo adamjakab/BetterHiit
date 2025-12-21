@@ -16,32 +16,15 @@ class HiitDataFieldView extends WatchUi.DataField {
     // Set your layout here. Anytime the size of obscurity of
     // the draw context is changed this will be called.
     function onLayout(dc as Dc) as Void {
-        var obscurityFlags = DataField.getObscurityFlags();
+        // var obscurityFlags = DataField.getObscurityFlags();
 
-        // Top left quadrant so we'll use the top left layout
-        if (obscurityFlags == (OBSCURE_TOP | OBSCURE_LEFT)) {
-            View.setLayout(Rez.Layouts.TopLeftLayout(dc));
-
-        // Top right quadrant so we'll use the top right layout
-        } else if (obscurityFlags == (OBSCURE_TOP | OBSCURE_RIGHT)) {
-            View.setLayout(Rez.Layouts.TopRightLayout(dc));
-
-        // Bottom left quadrant so we'll use the bottom left layout
-        } else if (obscurityFlags == (OBSCURE_BOTTOM | OBSCURE_LEFT)) {
-            View.setLayout(Rez.Layouts.BottomLeftLayout(dc));
-
-        // Bottom right quadrant so we'll use the bottom right layout
-        } else if (obscurityFlags == (OBSCURE_BOTTOM | OBSCURE_RIGHT)) {
-            View.setLayout(Rez.Layouts.BottomRightLayout(dc));
-
-        // Use the generic, centered layout
-        } else {
-            View.setLayout(Rez.Layouts.MainLayout(dc));
-            var labelView = View.findDrawableById("label") as Text;
-            labelView.locY = labelView.locY - 30;
-            var valueView = View.findDrawableById("value") as Text;
-            valueView.locY = valueView.locY + 30;
-        }
+        
+        View.setLayout(Rez.Layouts.MainLayout(dc));
+        var labelView = View.findDrawableById("label") as Text;
+        labelView.locY = labelView.locY - 30;
+        var valueView = View.findDrawableById("value") as Text;
+        valueView.locY = valueView.locY + 30;
+    
 
         (View.findDrawableById("label") as Text).setText(Rez.Strings.label);
     }
