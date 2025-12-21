@@ -1,4 +1,5 @@
 <strings>
     <string id="AppName">Better HIIT Datafield</string>
-    <string id="label">Current Exercise</string>
+    <string id="label">Current Step</string>
+    <string id="unknown">Unknown</string>
 </strings>

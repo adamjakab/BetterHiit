@@ -15,11 +15,8 @@ This data field is the successor of the app called [iHIIT](https://apps.garmin.c
 
 ## How to use
 
-Once the environment is set up correctly, use the run.sh script with the `run` command:
-> $ ./run.sh run
-
 To run for a specific device (e.x.: Forerunner 965):
-> $ ./run.sh --device fr965 run
+> $ ./run.sh clean && ./run.sh --device fr965 run
 
 To run tests (not implemented):
 > $ ./run.sh test
@@ -27,3 +24,5 @@ To run tests (not implemented):
 The `help` command will list the available commands (you can also just omit it). 
 > $ ./run.sh help
 
+Build and pack for production:
+> ./run.sh clean && ./run.sh pack

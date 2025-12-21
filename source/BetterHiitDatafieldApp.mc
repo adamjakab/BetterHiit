@@ -2,7 +2,7 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-class HiitDataFieldApp extends Application.AppBase {
+class BetterHiitDatafieldApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
@@ -18,11 +18,7 @@ class HiitDataFieldApp extends Application.AppBase {
 
     //! Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        return [ new HiitDataFieldView() ];
+        return [ new BetterHiitDatafieldView() ];
     }
 
 }
-
-// function getApp() as HiitDataFieldApp {
-//     return Application.getApp() as HiitDataFieldApp;
-// }
