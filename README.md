@@ -1,7 +1,7 @@
-Better HIIT
-============
+Better HIIT Datafield
+=====================
 
-**Better HIIT** is an activity data field for Garmin devices. It is geared towards people who need a single easy to read screen when sweat is rolling down their foreheads into their eyes and who do not have enough oxygen
+**Better HIIT Datafield** is an activity data field for Garmin devices. It is geared towards people who need a single easy to read screen when sweat is rolling down their foreheads into their eyes and who do not have enough oxygen
 to think about absurd exercise names given by Garmin ("Back Extension with Opposite Arm and Leg Reach" = "Bird Dog").
 
 

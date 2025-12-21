@@ -6,11 +6,11 @@ using Toybox.System as Sys;
 
 class HiitDataFieldView extends WatchUi.DataField {
 
-    hidden var mValue as Numeric;
+    hidden var mValue as String;
 
     function initialize() {
         DataField.initialize();
-        mValue = 0.0f;
+        mValue = "Unknown";
     }
 
     // Set your layout here. Anytime the size of obscurity of
@@ -52,15 +52,22 @@ class HiitDataFieldView extends WatchUi.DataField {
     // guarantee that compute() will be called before onUpdate().
     function compute(info as Activity.Info) as Void {
         // See Activity.Info in the documentation for available information.
-        
-        mValue = mValue + 0.25f;
-        if (mValue > 100.0f) {
-            mValue = 0.0f;
-        }
-
-        Sys.println("[HiitDataFieldView] compute: " + mValue);
-        
     }
+
+    // function onWorkoutStarted() as Void {
+    //     Sys.println("[HiitDataFieldView] onWorkoutStarted");
+    // }
+
+    // function onWorkoutStepComplete() as Void {
+    //     var currentStepInfo = Activity.getCurrentWorkoutStep() as Activity.WorkoutStepInfo;
+    //     if (currentStepInfo != null) {
+    //         mValue = currentStepInfo.name;
+    //     } else {
+    //         mValue = "N/A";
+    //     }
+        
+    //     Sys.println("[HiitDataFieldView::onWorkoutStepComplete]: " + mValue);
+    // }
 
     // Display the value you computed here. This will be called
     // once a second when the data field is visible.
@@ -76,7 +83,7 @@ class HiitDataFieldView extends WatchUi.DataField {
         } else {
             value.setColor(Graphics.COLOR_BLACK);
         }
-        value.setText(mValue.format("%.2f"));
+        value.setText(mValue);
 
         // Call parent's onUpdate(dc) to redraw the layout
         View.onUpdate(dc);

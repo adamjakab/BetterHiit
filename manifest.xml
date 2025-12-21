@@ -5,7 +5,17 @@
         Use "Monkey C: Edit Application" from the Visual Studio Code command palette
         to update the application attributes.
     -->
-    <iq:application id="511ed539-302f-4002-8cc7-69c24d7cf5e0" type="datafield" name="@Strings.AppName" entry="HiitDataFieldApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="5.2.0">
+    <!-- Beta App ID: id="511ed539302f40028cc769c24d7cf5e0"  -->
+    <!-- Prod App ID: id="7a3c8f2e9b4a4c61b5a71e8d0f6c2a91"  -->
+    <iq:application 
+        
+        id="511ed539302f40028cc769c24d7cf5e0"
+        type="datafield" 
+        name="@Strings.AppName"
+        entry="HiitDataFieldApp" 
+        launcherIcon="@Drawables.LauncherIcon" 
+        minApiLevel="5.2.0"
+    >
         <!--
             Use the following from the Visual Studio Code comand palette to edit
             the build targets:
