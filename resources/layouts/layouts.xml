@@ -1,9 +1,18 @@
 <layouts>
-    <!-- A generic, centered layout. -->
-    <layout id="MainLayout">
+    <!-- Layout for Exercise -->
+    <layout id="ExerciseLayout">
         <!-- <drawable class="Background" /> -->
         <label id="label" x="center" y="center" color="Graphics.COLOR_LT_GRAY" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_XTINY" />
-        <label id="step_name" x="center" y="center" color="Graphics.COLOR_ORANGE" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_MEDIUM" />
+        <label id="step_name" x="center" y="center" color="Graphics.COLOR_LT_GRAY" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_MEDIUM" />
         <label id="step_note" x="center" y="center" color="Graphics.COLOR_ORANGE" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_SMALL" />
     </layout>
+
+    <!-- Layout for Rest -->
+    <layout id="RestLayout">
+        <!-- <drawable class="Background" /> -->
+        <label id="label" x="center" y="center" color="Graphics.COLOR_LT_GRAY" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_XTINY" />
+        <label id="next_step_name" x="center" y="center" color="Graphics.COLOR_GREEN" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_MEDIUM" />
+    </layout>
+
+    <!-- Layout for Pause -->
 </layouts>

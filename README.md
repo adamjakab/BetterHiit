@@ -26,3 +26,7 @@ The `help` command will list the available commands (you can also just omit it).
 
 Build and pack for production:
 > ./run.sh clean && ./run.sh pack
+
+## Documentation
+
+SDK API: https://developer.garmin.com/connect-iq/api-docs/index.html
